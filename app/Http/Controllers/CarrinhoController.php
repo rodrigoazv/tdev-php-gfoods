@@ -33,6 +33,7 @@ class CarrinhoController extends Controller
 
         $req = Request();
         $idproduto = $req->input('id');
+        $idusuario = Auth::id();
 
         $produto = Produto::find($idproduto);
         if(empty($produto->id)){
@@ -40,13 +41,11 @@ class CarrinhoController extends Controller
             return redirect()->route('carrinho.index');
         }
 
-        $idusuario = Auth::id();
-
         $idpedido = Pedido::consultaId([
             'users_id' => $idusuario,
             'status' => 'FEITO'
         ]);
-        echo $idpedido;
+        
         if(empty($idpedido)){
             $pedido_novo = Pedido::create([
                 'users_id' => $idusuario,

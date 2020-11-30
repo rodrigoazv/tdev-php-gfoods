@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
         @if(Session::has('mensagem-sucesso'))
-            <h1>tem essa porra</h1>
+            <h1>Message</h1>
         @endif
         @if(Session::has('Mensagem-falha'))
-            <h1>n tem essa porra</h1>
+            <h1>Message</h1>
         @endif
             <div class="card">
                     @forelse($pedidos as $pedido)
@@ -21,7 +21,7 @@
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.deletar')}}">
                             @csrf
                             <input type='hidden' name='pedido_id' value="{{$pedido->id}}"/>
-                            <input type='hidden' name='produto_id' value="{{$pedido->id}}"/>
+                            <input type='hidden' name='produto_id' value="{{$pedido_produto->produto->id}}"/>
                             <input type='hidden' name='item' value="{{ 1 }}"/>
                             <button>Remover</button>
                         </form>
@@ -33,7 +33,7 @@
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.deletar')}}">
                             @csrf
                             <input type='hidden' name='pedido_id' value="{{$pedido->id}}"/>
-                            <input type='hidden' name='produto_id' value="{{$pedido->id}}"/>
+                            <input type='hidden' name='produto_id' value="{{$pedido_produto->produto->id}}"/>
                             <input type='hidden' name='item' value="{{ 0 }}"/>
                             <button>Remover Produto</button>
                         </form>

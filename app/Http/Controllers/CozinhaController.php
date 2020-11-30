@@ -35,13 +35,12 @@ class CozinhaController extends Controller
 
         $check_pedido = Pedido::where([
             'id' => $idpedido,
-            'users_id' => $idusuario,
             'status' => 'FEITO'
         ])->exists();
 
         if(!$check_pedido){
             $req->session()->flash('mensagem-falha');
-            return redirect()->route('carrinho.index');
+            return redirect()->route('cozinha.index');
         }
 
         PedidoProduto::where([

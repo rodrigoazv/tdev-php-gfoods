@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     protected $table='pedidos';
-    protected $fillable=['id'];
+    protected $fillable=['users_id'];
 
     public function pedido_produtos(){
         return $this->hasMany('App\PedidoProduto')
             ->select(\DB::raw('produto_id, sum(valor) as valores, count(1) as qtd'))
-            ->groupBy('produto_id');
+            ->groupBy('produto_id')
+            ->orderBy('produto_id', 'desc');
     }
 
     public static function consultaId($where){
