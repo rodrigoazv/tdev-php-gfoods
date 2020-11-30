@@ -14,7 +14,8 @@
                     @forelse($pedidos as $pedido)
                     <h1>{{$pedido->id}}</h1>
                     @foreach($pedido->pedido_produtos as $pedido_produto)
-                        <div>{{$pedido_produto->valores}}</div>
+                        <div>{{$pedido_produto->produto->name}}</div>
+                        <div>{{$pedido_produto->qtd}}</div>
                     @endforeach()
                     @empty
                         <h1>Nenhum</h1>
