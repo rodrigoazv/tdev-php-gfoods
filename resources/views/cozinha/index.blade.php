@@ -25,7 +25,10 @@
                     <form  method="POST" action="{{route('cozinha.preparando')}}">
                         @csrf
                         <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
-                        <button>MODO PREPARO</button>
+                        @if($pedido->status == 'FEITO')
+                            <button>MODO PREPARO</button>
+                        @endif
+                        
                     </form>
                     
                 </div>
