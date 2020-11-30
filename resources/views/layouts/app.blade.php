@@ -77,17 +77,17 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
             <ul class="nav nav-pills nav-fill" style="width: 100%">
-                <li class="nav-item">
+                <li class="nav-item" style="padding: 0 10px;">
                     <a class="nav-link active" href="#">Active</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Much longer nav link</a>
+                <li class="nav-item " style="padding: 0 10px;">
+                    <a class="nav-link  active" href="#">Much longer nav link</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                <li class="nav-item" style="padding: 0 10px;">
+                    <a class="nav-link  active" href="#">Link</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <li class="nav-item" style="padding: 0 10px;">
+                    <a class="nav-link  active" href="#" tabindex="-1" >Disabled</a>
                 </li>
                 </ul>
             </div>
@@ -98,12 +98,12 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             
             </ol>
-            <div class="carousel-inner" style="max-height: 300px">
+            <div class="carousel-inner" style="max-height: 400px; align: center; display:block;">
                 <div class="carousel-item active">
                 <img src="https://www.teahub.io/photos/full/19-191637_italian-food-images-hd.jpg" class="d-block w-100" alt="https://ychef.files.bbci.co.uk/976x549/p04tx3m6.jpg">
                 </div>
                 <div class="carousel-item">
-                <img src="https://www.teahub.io/photos/full/19-191637_italian-food-images-hd.jpg" class="d-block w-100" alt="https://ychef.files.bbci.co.uk/976x549/p04tx3m6.jpg">
+                <img src="https://s1.1zoom.me/b5353/683/Fast_food_Hamburger_Vegetables_Bottle_530823_3840x2160.jpg" class="d-block w-100" alt="https://ychef.files.bbci.co.uk/976x549/p04tx3m6.jpg">
                 </div>
     
             </div>
