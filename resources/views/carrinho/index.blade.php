@@ -23,25 +23,30 @@
                             <input type='hidden' name='pedido_id' value="{{$pedido->id}}"/>
                             <input type='hidden' name='produto_id' value="{{$pedido->id}}"/>
                             <input type='hidden' name='item' value="{{ 1 }}"/>
-                            <button>Remover</button t>
+                            <button>Remover</button>
                         </form>
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.adicionar')}}">
                             @csrf
                             <input type='hidden' name='id' value="{{$pedido_produto->produto->id}}"/>
-                            <button>Adicionar</button t>
+                            <button>Adicionar</button>
                         </form>
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.deletar')}}">
                             @csrf
                             <input type='hidden' name='pedido_id' value="{{$pedido->id}}"/>
                             <input type='hidden' name='produto_id' value="{{$pedido->id}}"/>
                             <input type='hidden' name='item' value="{{ 0 }}"/>
-                            <button>Remover Produto</button t>
+                            <button>Remover Produto</button>
                         </form>
                     </div>
                     @endforeach()
                     @empty
                         <h1>Nenhum</h1>
                     @endforelse
+                    <form  method="POST" action="{{route('carrinho.concluir')}}">
+                        @csrf
+                        <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
+                        <button>CONCLUIR</button>
+                    </form>
                 </div>
             </div>
         </div>

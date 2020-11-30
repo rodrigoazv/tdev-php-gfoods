@@ -117,4 +117,47 @@ class CarrinhoController extends Controller
 
         return redirect()->route('carrinho.index');
     }
+
+    public function concluir(){
+        $this->middleware('signed');
+
+        $req = Request();
+        $idpedido = $req->input('pedido_id');
+        $idusuario = Auth::id();
+
+        $check_pedido = Pedido::where([
+            'id' => $idpedido,
+            'users_id' => $idusuario,
+            'status' => 'FEITO'
+        ])->exists();
+
+        if(!$check_pedido){
+            $req->session()->flash('mensagem-falha');
+            return redirect()->route('carrinho.index');
+        }
+
+        PedidoProduto::where([
+            'pedido_id' => $idpedido
+        ])->update([
+            'status' => 'FINALIZADO'
+        ]);
+        Pedido::where([
+            'id' => $idpedido
+        ])->update([
+            'status' => 'FINALIZADO'
+        ]);
+
+        $req->session()->flash('mensagem-sucesso');
+
+        return redirect()->route('carrinho.compras');
+    }
+
+    public function compras(){
+       $compras = Pedido::where([
+        'status' => 'FINALIZADO',
+        'users_id' => Auth::id()
+       ])->get();
+
+       echo $compras;
+    }
 }

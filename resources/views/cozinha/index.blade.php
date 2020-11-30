@@ -1,0 +1,36 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        @if(Session::has('mensagem-sucesso'))
+            <h1>tem essa porra</h1>
+        @endif
+        @if(Session::has('Mensagem-falha'))
+            <h1>n tem essa porra</h1>
+        @endif
+            <div class="card">
+                    @forelse($pedidos as $pedido)
+                    <h1>{{$pedido->id}}</h1>
+                        @foreach($pedido->pedido_produtos as $pedido_produto)
+                        <div>
+                            <div>{{$pedido_produto->produto->name}}</div>
+                            <div>{{$pedido_produto->qtd}}</div>
+                        </div>
+                        @endforeach()
+                    @empty
+                        <h1>Nenhum</h1>
+                    @endforelse
+                    <form  method="POST" action="{{route('cozinha.preparando')}}">
+                        @csrf
+                        <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
+                        <button>MODO PREPARO</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

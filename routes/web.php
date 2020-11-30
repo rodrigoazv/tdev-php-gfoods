@@ -26,3 +26,8 @@ Route::get('/carrinho/adicionar', function(){
 });
 Route::post('/carrinho/adicionar', 'CarrinhoController@adicionar')->name('carrinho.adicionar');
 Route::post('/carrinho/deletar', 'CarrinhoController@deletar')->name('carrinho.deletar');
+Route::post('/carrinho/concluir', 'CarrinhoController@concluir')->name('carrinho.concluir');
+Route::get('/carrinho/compras', 'CarrinhoController@compras')->name('carrinho.compras');
+//cozinha
+Route::get('/cozinha', 'CozinhaController@index')->name('cozinha.index');
+Route::post('/cozinha/preparo', 'CozinhaController@preparando')->name('cozinha.preparando');
