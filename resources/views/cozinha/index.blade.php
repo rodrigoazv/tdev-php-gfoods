@@ -5,18 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
         @if(Session::has('mensagem-sucesso'))
-            <h1>tem essa porra</h1>
+            <h1>Sucesso</h1>
         @endif
         @if(Session::has('Mensagem-falha'))
-            <h1>n tem essa porra</h1>
+            <h1>Sem sucesso</h1>
         @endif
-            <div class="card">
+            <div class="card p-3">
                     @forelse($pedidos as $pedido)
-                    <h1>{{$pedido->id}}</h1>
+                    <h1>Pedido de numero {{$pedido->id}}</h1>
+                    <h3>Status{{$pedido->id}}</h3>
                         @foreach($pedido->pedido_produtos as $pedido_produto)
                         <div>
-                            <div>{{$pedido_produto->produto->name}}</div>
-                            <div>{{$pedido_produto->qtd}}</div>
+                            <div>Nome do produto :{{$pedido_produto->produto->name}}</div>
+                            <div>Quantidade: {{$pedido_produto->qtd}} </div>
                         </div>
                         @endforeach()
                     @empty
@@ -25,8 +26,8 @@
                     <form  method="POST" action="{{route('cozinha.preparando')}}">
                         @csrf
                         <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
-                        @if($pedido->status == 'FEITO')
-                            <button>MODO PREPARO</button>
+                        @if($pedido->status == 'PREPARO')
+                            <button class="btn btn-primary">MODO PREPARO</button>
                         @endif
                         
                     </form>
