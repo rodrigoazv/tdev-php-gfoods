@@ -24,11 +24,6 @@ class CarrinhoController extends Controller
             'pedido_id' => $pedidos[0]->id,
         ])->get();
 
-        dd([
-            $pedidos,
-            $pedidos_p[0]->produto_id,   
-        ]);
-
         return view('carrinho.index', compact('pedidos'));
     }
 }
