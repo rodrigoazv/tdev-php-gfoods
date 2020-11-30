@@ -4,6 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        @if(Session::has('mensagem-sucesso'))
+            <h1>tem essa porra</h1>
+        @endif
+        @if(Session::has('Mensagem-falha'))
+            <h1>tem essa porra</h1>
+        @endif
             <div class="card">
                     @forelse($pedidos as $pedido)
                     <h1>{{$pedido->id}}</h1>

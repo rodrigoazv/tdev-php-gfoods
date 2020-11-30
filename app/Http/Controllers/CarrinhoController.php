@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Pedido;
 use App\PedidoProduto;
+use App\Produto;
 
 class CarrinhoController extends Controller
 {
@@ -32,7 +33,7 @@ class CarrinhoController extends Controller
         $req = Request();
         $idproduto = $req->input('id');
 
-        $produt = Produto::find($idproduto);
+        $produto = Produto::find($idproduto);
         if(empty($produto->id)){
             $req->session()->flash('Mensagem-falha', 'Não tem esse');
             return redirect()->route('carrinho.index');

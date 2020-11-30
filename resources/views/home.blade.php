@@ -20,7 +20,11 @@
                             <h5 class="card-title">{{$foods->name}}</h5>
                             <p class="card-text">{{$foods->description}}</p>
                             <p class="card-text">{{$foods->price}}</p>
-                            <a href="#" class="btn btn-primary">Adicionar ao Pedido</a>
+                            <form method="POST" action="{{route('carrinho.adicionar')}}">
+                            @csrf
+                                <input type='hidden' name='id' value="{{$foods->id}}"/>
+                                <button >Adicioanr</button>
+                            </form>
                         </div>
                     </div>
                     @endforeach()
