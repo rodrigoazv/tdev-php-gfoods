@@ -13,8 +13,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @foreach($food as $foods)
+                    <div class="card" style="width: 18rem; margin: 10px">
+                        <img class="card-img-top" src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-suco.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$foods->name}}</h5>
+                            <p class="card-text">{{$foods->description}}</p>
+                            <p class="card-text">{{$foods->price}}</p>
+                            <a href="#" class="btn btn-primary">Adicionar ao Pedido</a>
+                        </div>
+                    </div>
+                    @endforeach()
 
-                    
                 </div>
             </div>
         </div>
