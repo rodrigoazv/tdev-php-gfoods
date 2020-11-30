@@ -16,17 +16,18 @@ class CarrinhoController extends Controller
         $this->objPedido = new Pedido();
         $this->objPedidoProduto = new PedidoProduto();
     }
+
+
     public function index(){
         $pedidos = $this->objPedido::where([
             'status' => 'FEITO',
             'users_id' => Auth::id()
         ])->get();
-        $pedidos_p = $this->objPedidoProduto::where([
-            'pedido_id' => $pedidos[0]->id,
-        ])->get();
 
         return view('carrinho.index', compact('pedidos'));
     }
+
+
     public function adicionar(){
         $this->middleware('signed');
 

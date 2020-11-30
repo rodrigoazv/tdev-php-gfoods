@@ -13,6 +13,9 @@
             <div class="card">
                     @forelse($pedidos as $pedido)
                     <h1>{{$pedido->id}}</h1>
+                    @foreach($pedido->pedido_produtos as $pedido_produto)
+                        <div>{{$pedido_produto->valores}}</div>
+                    @endforeach()
                     @empty
                         <h1>Nenhum</h1>
                     @endforelse
