@@ -65,4 +65,56 @@ class CarrinhoController extends Controller
         return redirect()->route('carrinho.index');
 
     }
+
+    public function deletar(){
+        $this->middleware('signed');
+
+        $req = Request();
+        $idpedido = $req->input('pedido_id');
+        $idproduto = $req->input('produto_id');
+        $remove_apenas_item = (boolean)$req->input('item');
+        $idusuario = Auth::id();
+
+        $idpedido = Pedido::consultaId([
+            'id' => $idpedido,
+            'users_id' => $idusuario,
+            'status' => 'FEITO'
+        ]);
+
+        if(empty($idpedido)){
+            $req->session()->flash('mensagem-falha');
+            return redirect()->route('carrinho.index');
+        }
+
+        $where_produto = [
+            'pedido_id' => $idpedido,
+            'produto_id' => $idproduto
+        ];
+
+        $produto = PedidoProduto::where($where_produto)->orderBy('id', 'desc')->first();
+        if(empty($produto->id)){
+            $req->session()->flash('mensagem-falha');
+            return redirect()->route('carrinho.index');
+        }
+
+        if($remove_apenas_item){
+            $where_produto['id'] = $produto->id;
+        }
+
+        PedidoProduto::where($where_produto)->delete();
+
+        $check_pedido = PedidoProduto::where([
+            'pedido_id' => $produto->pedido_id
+        ])->exists();
+
+        if(!$check_pedido){
+            Pedido::where([
+                'pedido_id' => $produto->pedido_id
+            ])->delete();
+        }
+
+        $req->session()->flash('mensagem-sucesso');
+
+        return redirect()->route('carrinho.index');
+    }
 }

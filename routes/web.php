@@ -25,3 +25,4 @@ Route::get('/carrinho/adicionar', function(){
     return redirect()->route('home');
 });
 Route::post('/carrinho/adicionar', 'CarrinhoController@adicionar')->name('carrinho.adicionar');
+Route::post('/carrinho/deletar', 'CarrinhoController@deletar')->name('carrinho.deletar');
