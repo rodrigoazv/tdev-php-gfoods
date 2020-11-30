@@ -30,7 +30,7 @@
                         @endif
                         @if($pedido->status == "PREPARO")
                             <button class="btn btn-warning">SENDO PREPARADO</button>
-                        @endif
+                        @endif 
                     </form>
                     @empty
                         <h1>Nenhum</h1>             
