@@ -10,33 +10,37 @@
         @if(Session::has('Mensagem-falha'))
             <h1>Message</h1>
         @endif
-            <div class="card">
+            <div class="card" style="padding: 2 0px">
                     @forelse($pedidos as $pedido)
                     <h1>{{$pedido->id}}</h1>
                     @foreach($pedido->pedido_produtos as $pedido_produto)
-                    <div>
+                    <div style="border-bottom: 5px solid #f4f4f4">
                         <div>{{$pedido_produto->produto->name}}</div>
-                        <div>{{$pedido_produto->qtd}}</div>
-                       
+                        
+                       <div style="display: flex">
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.deletar')}}">
                             @csrf
                             <input type='hidden' name='pedido_id' value="{{$pedido->id}}"/>
                             <input type='hidden' name='produto_id' value="{{$pedido_produto->produto->id}}"/>
                             <input type='hidden' name='item' value="{{ 1 }}"/>
-                            <button>Remover</button>
+                            <button class="btn btn-outline-danger">-</button>
                         </form>
+                        <div style="padding: 6px 20px">{{$pedido_produto->qtd}}</div>
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.adicionar')}}">
                             @csrf
                             <input type='hidden' name='id' value="{{$pedido_produto->produto->id}}"/>
-                            <button>Adicionar</button>
+                            <button class="btn btn-outline-success">+</button>
                         </form>
+                        </div>
+                        <div style="margin-top: 10px">
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.deletar')}}">
                             @csrf
                             <input type='hidden' name='pedido_id' value="{{$pedido->id}}"/>
                             <input type='hidden' name='produto_id' value="{{$pedido_produto->produto->id}}"/>
                             <input type='hidden' name='item' value="{{ 0 }}"/>
-                            <button>Remover Produto</button>
+                            <button class="btn btn-outline-dark">Remover Produto</button>
                         </form>
+                        </div>
                     </div>
                     @endforeach()
                     @empty
@@ -45,7 +49,7 @@
                     <form  method="POST" action="{{route('carrinho.concluir')}}">
                         @csrf
                         <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
-                        <button>CONCLUIR</button>
+                        <button class="btn btn-primary btn-lg btn-block">FECHAR CONTA</button>
                     </form>
                 </div>
             </div>
