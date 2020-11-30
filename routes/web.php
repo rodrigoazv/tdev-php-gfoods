@@ -21,3 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/carrinho', 'CarrinhoController@index')->name('carrinho.index');
+Route::get('/carrinho/adicionar', function(){
+    return redirect()->route('home');
+});
+Route::post('/carrinho/adicionar', 'CarrinhoController@adicionar')->name('carrinho.adicionar');
