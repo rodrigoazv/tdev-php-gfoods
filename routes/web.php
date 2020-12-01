@@ -31,3 +31,7 @@ Route::get('/carrinho/compras', 'CarrinhoController@compras')->name('carrinho.co
 //cozinha
 Route::get('/cozinha', 'CozinhaController@index')->name('cozinha.index');
 Route::post('/cozinha/preparo', 'CozinhaController@preparando')->name('cozinha.preparando');
+//Admin
+
+Route::get('/cadprod', 'Admin\ProdutoController@create')->name('cadprod.create');
+Route::post('/foodscad', 'Admin\ProdutoController@store')->name('produto.store');

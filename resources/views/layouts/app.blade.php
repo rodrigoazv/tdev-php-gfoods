@@ -74,48 +74,25 @@
                 </div>
             </div>
         </nav>
+        
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
             <ul class="nav nav-pills nav-fill" style="width: 100%">
                 <li class="nav-item" style="padding: 0 10px;">
-                    <a class="nav-link active" href="#">Active</a>
+                    <a class="nav-link active" href="/home">Home</a>
                 </li>
                 <li class="nav-item " style="padding: 0 10px;">
-                    <a class="nav-link  active" href="#">Much longer nav link</a>
+                    <a class="nav-link  active" href="/meuspedidos">Meus Pedidos</a>
                 </li>
                 <li class="nav-item" style="padding: 0 10px;">
-                    <a class="nav-link  active" href="#">Link</a>
+                    <a class="nav-link  active" href="/promocoes">Promoções</a>
                 </li>
                 <li class="nav-item" style="padding: 0 10px;">
-                    <a class="nav-link  active" href="#" tabindex="-1" >Disabled</a>
+                    <a class="nav-link  active" href="/carrinho" tabindex="-1" >Carrinho</a>
                 </li>
                 </ul>
             </div>
         </nav>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            
-            </ol>
-            <div class="carousel-inner" style="max-height: 400px; align: center; display:block;">
-                <div class="carousel-item active">
-                <img src="https://www.teahub.io/photos/full/19-191637_italian-food-images-hd.jpg" class="d-block w-100" alt="https://ychef.files.bbci.co.uk/976x549/p04tx3m6.jpg">
-                </div>
-                <div class="carousel-item">
-                <img src="https://s1.1zoom.me/b5353/683/Fast_food_Hamburger_Vegetables_Bottle_530823_3840x2160.jpg" class="d-block w-100" alt="https://ychef.files.bbci.co.uk/976x549/p04tx3m6.jpg">
-                </div>
-    
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
         <main class="py-4">
             
             @yield('content')

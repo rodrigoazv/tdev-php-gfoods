@@ -48,7 +48,7 @@
                         <h1>Nenhum</h1>
                     @endforelse
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                         Launch static backdrop modal
+                         Fechar conta e escolher forma de pagamento
                     </button>
                     
                 </div>
@@ -75,27 +75,35 @@
             </tr>
         </thead>
         <tbody>
+        @forelse($pedidos as $pedido)
+            @foreach($pedido->pedido_produtos as $pedido_produto)
             <tr>
-            @forelse($pedidos as $pedido)
+            
             <td>{{$pedido_produto->produto->name}}</td>
             <td>{{$pedido_produto->qtd}}</td>
             <td>{{$pedido_produto->produto->price * $pedido_produto->qtd}}</td>
+           
+            </tr>
+            @endforeach()
             @empty
                 <h1>Nenhum</h1>
             @endforelse
-            </tr>
         </tbody>
      </table>
-     
+        <div>Desconto :{{$pedido->desconto}} </div>
+        <div>Total : {{$pedido_produto->desconto}} </div>
       </div>
       <div class="modal-footer">
         <form  method="POST" action="{{route('carrinho.concluir')}}">
             @csrf
             <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
-            <button class="btn btn-primary btn-lg btn-block">FECHAR CONTA</button>
+            <button class="btn btn-primary btn-lg btn-block">Pagar com cartão</button>
         </form>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <form  method="POST" action="{{route('carrinho.concluir')}}">
+            @csrf
+            <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
+            <button class="btn btn-success btn-lg btn-block">Pagar com dinheiro</button>
+        </form>
       </div>
     </div>
   </div>

@@ -2,6 +2,26 @@
 
 @section('content')
 <div class="container">
+    @if (Auth::user()->name == 'admin')
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+            <ul class="nav nav-pills nav-fill" style="width: 100%">
+                <li class="nav-item" style="padding: 0 10px;">
+                    <a class="nav-link " href="/cozinha">Cozinha</a>
+                </li>
+                <li class="nav-item " style="padding: 0 10px;">
+                    <a class="nav-link  " href="/cadprod">Cadastrar produto</a>
+                </li>
+                <li class="nav-item" style="padding: 0 10px;">
+                    <a class="nav-link  " href="/promocoes">Teste</a>
+                </li>
+                <li class="nav-item" style="padding: 0 10px;">
+                    <a class="nav-link  " href="/pedidos" tabindex="-1" >Pedidos todos</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -32,7 +52,7 @@
                 </div>
                
                     <div class="card-header">{{ __('Bebidas') }}</div>
-
+                    
                     <div class="card-body" style="display: flex">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
