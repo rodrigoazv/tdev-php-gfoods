@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+        @if(Session::has('mensagem-sucesso'))
+            <h1>Message</h1>
+        @endif
+        @if(Session::has('Mensagem-falha'))
+            <h1>Message</h1>
+        @endif
     @if (Auth::user()->name == 'admin')
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

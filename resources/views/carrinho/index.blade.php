@@ -10,9 +10,9 @@
         @if(Session::has('Mensagem-falha'))
             <h1>Message</h1>
         @endif
-            <div class="card" style="padding: 2 0px">
+            <div class="card" style="padding: 20px">
                     @forelse($pedidos as $pedido)
-                    <h1>{{$pedido->id}}</h1>
+                    <h1>Id: #{{$pedido->id}}</h1>
                     @foreach($pedido->pedido_produtos as $pedido_produto)
                     <div style="border-bottom: 5px solid #f4f4f4">
                         <div>{{$pedido_produto->produto->name}}</div>
