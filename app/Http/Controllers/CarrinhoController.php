@@ -45,7 +45,7 @@ class CarrinhoController extends Controller
             'users_id' => $idusuario,
             'status' => 'FEITO'
         ]);
-        
+
         if(empty($idpedido)){
             $pedido_novo = Pedido::create([
                 'users_id' => $idusuario,

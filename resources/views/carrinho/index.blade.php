@@ -16,7 +16,7 @@
                     @foreach($pedido->pedido_produtos as $pedido_produto)
                     <div style="border-bottom: 5px solid #f4f4f4">
                         <div>{{$pedido_produto->produto->name}}</div>
-                        
+                        <div style="padding: 6px 20px">PEDIDO {{$pedido->status}}</div>
                        <div style="display: flex">
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.deletar')}}">
                             @csrf
@@ -26,6 +26,7 @@
                             <button class="btn btn-outline-danger">-</button>
                         </form>
                         <div style="padding: 6px 20px">{{$pedido_produto->qtd}}</div>
+                        
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.adicionar')}}">
                             @csrf
                             <input type='hidden' name='id' value="{{$pedido_produto->produto->id}}"/>
@@ -46,18 +47,57 @@
                     @empty
                         <h1>Nenhum</h1>
                     @endforelse
-                    <form  method="POST" action="{{route('carrinho.concluir')}}">
-                        @csrf
-                        <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
-                        <button class="btn btn-primary btn-lg btn-block">FECHAR CONTA</button>
-                    </form>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                         Launch static backdrop modal
+                    </button>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
-<form id="form-adicionar-produto" method="POST" action="{{route('carrinho.adicionar')}}">
-    @csrf
-    <input type='hidden' name='produto_id'/>
-</form>
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <table class="table table-dark">
+        <thead>
+            <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            @forelse($pedidos as $pedido)
+            <td>{{$pedido_produto->produto->name}}</td>
+            <td>{{$pedido_produto->qtd}}</td>
+            <td>{{$pedido_produto->produto->price * $pedido_produto->qtd}}</td>
+            @empty
+                <h1>Nenhum</h1>
+            @endforelse
+            </tr>
+        </tbody>
+     </table>
+     
+      </div>
+      <div class="modal-footer">
+        <form  method="POST" action="{{route('carrinho.concluir')}}">
+            @csrf
+            <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
+            <button class="btn btn-primary btn-lg btn-block">FECHAR CONTA</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
