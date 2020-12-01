@@ -45,7 +45,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEstado">Categoria</label>
-            <select id="inputEstado" class="form-control" required>
+            <select id="inputEstado" class="form-control" name="type" required>
               <option selected>Comida</option>
               <option>Bebida</option>
             </select>

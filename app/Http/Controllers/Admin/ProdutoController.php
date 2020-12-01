@@ -28,6 +28,7 @@ class ProdutoController extends Controller
             'description'=>$request->description,
             'price'=>$request->price,
             'foto'=>$request->foto,
+            'type'=>$request->type,
         ]);
         if($cad){
             return redirect('home');

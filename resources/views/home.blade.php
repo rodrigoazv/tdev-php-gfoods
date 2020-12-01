@@ -40,8 +40,9 @@
                         </div>
                     @endif
                     @foreach($food as $foods)
+                    @if ($foods->type == 'Comida')
                     <div class="card" style="width: 18rem; margin: 10px">
-                        <img class="card-img-top" src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-suco.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="{{$foods->foto}}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Nome: {{$foods->name}}</h5>
                             <p class="card-text">Descrição : {{$foods->description}}</p>
@@ -53,6 +54,7 @@
                             </form>
                         </div>
                     </div>
+                    @endif
                     @endforeach()
 
                 </div>
@@ -66,6 +68,7 @@
                             </div>
                         @endif
                         @foreach($food as $foods)
+                        @if ($foods->type == 'Bebida')
                         <div class="card" style="width: 18rem; margin: 10px">
                             <img class="card-img-top" src="https://www.receiteria.com.br/wp-content/uploads/receitas-de-suco.jpg" alt="Card image cap">
                             <div class="card-body">
@@ -79,6 +82,7 @@
                                 </form>
                             </div>
                         </div>  
+                        @endif
                         @endforeach()
 
                

@@ -20,9 +20,10 @@ class CarrinhoController extends Controller
 
     public function index(){
         $pedidos = $this->objPedido::where([
-            'status' => 'FEITO',
             'users_id' => Auth::id()
-        ])->get();
+        ])->whereIn(
+            'status', ['PREPARO', 'FEITO']
+        )->get();
 
         return view('carrinho.index', compact('pedidos'));
     }
