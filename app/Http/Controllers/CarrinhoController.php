@@ -24,8 +24,12 @@ class CarrinhoController extends Controller
         ])->whereIn(
             'status', ['PREPARO', 'FEITO']
         )->get();
-
-        return view('carrinho.index', compact('pedidos'));
+        if(count($pedidos) > 0 ){
+            return view('carrinho.index', compact('pedidos'));
+        }else{
+            return redirect()->route('home');
+        }
+        
     }
 
 
