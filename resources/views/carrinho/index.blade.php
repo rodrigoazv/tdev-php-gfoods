@@ -26,6 +26,7 @@
                             <button class="btn btn-outline-danger">-</button>
                         </form>
                         <div style="padding: 6px 20px">{{$pedido_produto->qtd}}</div>
+                        <div style="padding: 6px 20px">{{$pedido_produto->valores}}</div>
                         
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.adicionar')}}">
                             @csrf

@@ -41,6 +41,9 @@ class CarrinhoController extends Controller
         $idusuario = Auth::id();
 
         $produto = Produto::find($idproduto);
+
+        $valor = $produto->price;
+        
         if(empty($produto->id)){
             $req->session()->flash('Mensagem-falha', 'Não tem esse');
             return redirect()->route('carrinho.index');
@@ -62,6 +65,7 @@ class CarrinhoController extends Controller
         PedidoProduto::create([
             'pedido_id' => $idpedido,
             'produto_id' => $idproduto,
+            'valor' => $valor,
             'status' => 'FEITO'
         ]);
 
@@ -132,7 +136,7 @@ class CarrinhoController extends Controller
         $check_pedido = Pedido::where([
             'id' => $idpedido,
             'users_id' => $idusuario,
-            'status' => 'FEITO'
+            'status' => 'PREPARO'
         ])->exists();
 
         if(!$check_pedido){
@@ -149,6 +153,11 @@ class CarrinhoController extends Controller
             'id' => $idpedido
         ])->update([
             'status' => 'FINALIZADO'
+        ]);
+
+        Cupom::create([
+            'email' => $idpedido,
+            'valor' => $idproduto
         ]);
 
         $req->session()->flash('mensagem-sucesso');

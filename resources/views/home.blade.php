@@ -50,6 +50,7 @@
                             <form method="POST" action="{{route('carrinho.adicionar')}}">
                             @csrf
                                 <input type='hidden' name='id' value="{{$foods->id}}"/>
+                                <input type='hidden' name='val' value="{{$foods->price}}"/>
                                 <button class="btn btn-success">Adicioanr</button>
                             </form>
                         </div>
@@ -78,6 +79,7 @@
                                 <form method="POST" action="{{route('carrinho.adicionar')}}">
                                 @csrf
                                     <input type='hidden' name='id' value="{{$foods->id}}"/>
+                                    <input type='hidden' name='val' value="{{$foods->price}}"/>
                                     <button class="btn btn-success">Adicioanr</button>
                                 </form>
                             </div>
