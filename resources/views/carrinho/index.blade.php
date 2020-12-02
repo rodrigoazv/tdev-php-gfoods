@@ -16,7 +16,7 @@
                     @foreach($pedido->pedido_produtos as $pedido_produto)
                     <div style="border-bottom: 5px solid #f4f4f4">
                         <div>{{$pedido_produto->produto->name}}</div>
-                        <div style="padding: 6px 20px">PEDIDO {{$pedido->status}}</div>
+                        <div>Já está na cozinha</div>
                        <div style="display: flex">
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.deletar')}}">
                             @csrf

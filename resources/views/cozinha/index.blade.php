@@ -16,21 +16,23 @@
                   
                     <h1>Pedido de numero {{$pedido->id}}</h1>
                     <h3>Status {{$pedido->status}}</h3>
-                        @foreach($pedido->pedido_produtos as $pedido_produto)
+                        @foreach($pedido->pedido_produtos_s as $pedido_produto)
                         <div style="border-bottom: 1px solid #f4f4f4">
                             <div>Nome do produto :{{$pedido_produto->produto->name}}</div>
                             <div>Quantidade: {{$pedido_produto->qtd}} </div>
+                            <div>Quantidade: {{$pedido_produto->status}} </div>
                         </div>
                         @endforeach()
                     <form  method="POST" action="{{route('cozinha.preparando')}}">
                         @csrf
                         <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
-                        @if($pedido->status == "FEITO")
+                        @if($pedido_produto->status == "FEITO")
                             <button class="btn btn-primary">MODO PREPARO</button>
                         @endif
-                        @if($pedido->status == "PREPARO")
+                        @if($pedido_produto->status == "PREPARO")
                             <button class="btn btn-warning">SENDO PREPARADO</button>
-                        @endif 
+                        @endif
+
                     </form>
                     @empty
                         <h1>Nenhum</h1>             

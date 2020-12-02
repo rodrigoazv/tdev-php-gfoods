@@ -22,7 +22,6 @@ class CozinhaController extends Controller
         $pedidos = $this->objPedido::whereIn(
             'status', ['PREPARO', 'FEITO']
         )->get();
-        echo $pedidos;
         return view('cozinha.index', compact('pedidos'));
     }
 
@@ -45,11 +44,6 @@ class CozinhaController extends Controller
 
         PedidoProduto::where([
             'pedido_id' => $idpedido
-        ])->update([
-            'status' => 'PREPARO'
-        ]);
-        Pedido::where([
-            'id' => $idpedido
         ])->update([
             'status' => 'PREPARO'
         ]);

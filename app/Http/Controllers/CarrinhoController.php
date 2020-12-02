@@ -43,7 +43,7 @@ class CarrinhoController extends Controller
         $produto = Produto::find($idproduto);
 
         $valor = $produto->price;
-        
+
         if(empty($produto->id)){
             $req->session()->flash('Mensagem-falha', 'Não tem esse');
             return redirect()->route('carrinho.index');
