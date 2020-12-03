@@ -11,6 +11,9 @@
             <h1>Message</h1>
         @endif
             <div class="card" style="padding: 20px">
+            @php
+                $total_pedido = 0;
+            @endphp
                     @forelse($pedidos as $pedido)
                     <h1>Id: #{{$pedido->id}}</h1>
                     @foreach($pedido->pedido_produtos as $pedido_produto)
@@ -27,6 +30,9 @@
                         </form>
                         <div style="padding: 6px 20px">{{$pedido_produto->qtd}}</div>
                         <div style="padding: 6px 20px">{{$pedido_produto->valores}}</div>
+                        @php
+                             $total_pedido += $pedido_produto->valores;
+                         @endphp
                         
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.adicionar')}}">
                             @csrf
@@ -92,7 +98,7 @@
         </tbody>
      </table>
         <div>Desconto :{{$pedido->desconto}} </div>
-        <div>Total : {{$pedido_produto->desconto}} </div>
+        <div>Total : {{$total_pedido}} </div>
       </div>
       <div class="modal-footer">
         <form  method="POST" action="{{route('carrinho.concluir')}}">

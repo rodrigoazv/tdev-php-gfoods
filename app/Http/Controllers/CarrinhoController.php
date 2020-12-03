@@ -19,6 +19,7 @@ class CarrinhoController extends Controller
 
 
     public function index(){
+       
         $pedidos = $this->objPedido::where([
             'users_id' => Auth::id()
         ])->whereIn(
@@ -162,7 +163,7 @@ class CarrinhoController extends Controller
 
         $req->session()->flash('mensagem-sucesso');
 
-        return redirect()->route('carrinho.compras');
+        return redirect()->route('carrinho.index');
     }
 
     public function compras(){
