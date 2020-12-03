@@ -101,15 +101,34 @@
         <div>Total : {{$total_pedido}} </div>
       </div>
       <div class="modal-footer">
-        <form  method="POST" action="{{route('carrinho.concluir')}}">
+        <form  method="POST" style=" margin: auto"action="{{route('carrinho.concluir')}}">
             @csrf
             <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
+            <input type="hidden" name="total" value="{{$total_pedido}}">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Numero do cartão</label>
+                    <input type="number" class="form-control" id="name"  name="number" placeholder="Cartão numero" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Preço</label>
+                    <input type="number" class="form-control" id="cvv" name="cvv" placeholder="cvv" required>
+                </div>
+                </div>
+                <div class="form-group">
+                <label for="inputAddress">CPF</label>
+                <input type="textarea" class="form-control" id="CPF" name="CPF" required placeholder="CPF do dono">
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEstado">Categoria</label>
+                    <select id="inputEstado" class="form-control" name="type" required>
+                    <option selected>Crédito</option>
+                    <option>Débito</option>
+                    </select>
+                </div>
+                </div>
             <button class="btn btn-primary btn-lg btn-block">Pagar com cartão</button>
-        </form>
-        <form  method="POST" action="{{route('carrinho.concluir')}}">
-            @csrf
-            <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
-            <button class="btn btn-success btn-lg btn-block">Pagar com dinheiro</button>
         </form>
       </div>
     </div>
