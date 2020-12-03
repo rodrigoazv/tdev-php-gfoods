@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     protected $table='pedidos';
-    protected $fillable=['users_id', 'status'];
+    protected $fillable=['users_id', 'status', 'number', 'type', 'valor', 'cvv', 'cpf'];
 
     public function pedido_produtos(){
         return $this->hasMany('App\PedidoProduto')

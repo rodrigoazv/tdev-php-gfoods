@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Pedido;
 use App\PedidoProduto;
+use App\Cupom;
 use App\Produto;
 
 class CarrinhoController extends Controller
@@ -128,16 +129,20 @@ class CarrinhoController extends Controller
     }
 
     public function concluir(){
-        $this->middleware('signed');
 
         $req = Request();
         $idpedido = $req->input('pedido_id');
+        $total = $req->input('total');
+        $number = $req->input('number');
+        $cvv = $req->input('cvv');
+        $cpf = $req->input('cpf');
+        $type = $req->input('type');
         $idusuario = Auth::id();
 
         $check_pedido = Pedido::where([
             'id' => $idpedido,
             'users_id' => $idusuario,
-            'status' => 'PREPARO'
+            'status' => 'FEITO'
         ])->exists();
 
         if(!$check_pedido){
@@ -153,12 +158,17 @@ class CarrinhoController extends Controller
         Pedido::where([
             'id' => $idpedido
         ])->update([
+            'total' => $total,
+            'cvv' => $cvv,
+            'number' => $number,
+            'cpf' => $cpf,
+            'type' => $type,
             'status' => 'FINALIZADO'
         ]);
 
         Cupom::create([
-            'email' => $idpedido,
-            'valor' => $idproduto
+            'email' => $idusuario,
+            'valor' => ($total*0.1)
         ]);
 
         $req->session()->flash('mensagem-sucesso');

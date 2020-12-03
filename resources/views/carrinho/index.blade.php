@@ -117,14 +117,14 @@
                 </div>
                 <div class="form-group">
                 <label for="inputAddress">CPF</label>
-                <input type="textarea" class="form-control" id="CPF" name="CPF" required placeholder="CPF do dono">
+                <input type="textarea" class="form-control" id="cpf" name="cpf" required placeholder="CPF do dono">
                 </div>
                 <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEstado">Categoria</label>
                     <select id="inputEstado" class="form-control" name="type" required>
-                    <option selected>Crédito</option>
-                    <option>Débito</option>
+                    <option selected>CREDITO</option>
+                    <option>DEBITO</option>
                     </select>
                 </div>
                 </div>
