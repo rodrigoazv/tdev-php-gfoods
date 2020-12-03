@@ -72,7 +72,7 @@ class CarrinhoController extends Controller
         ]);
 
         $req->session()->flash('mensagem-sucesso', "Adding");
-        return redirect()->route('home');
+        return redirect()->route('carrinho.index');
 
     }
 
