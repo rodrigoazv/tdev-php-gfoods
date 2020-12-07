@@ -20,14 +20,21 @@ class CarrinhoController extends Controller
 
 
     public function index(){
-       
+        $idusuario = Auth::id();
         $pedidos = $this->objPedido::where([
             'users_id' => Auth::id()
         ])->whereIn(
             'status', ['PREPARO', 'FEITO']
         )->get();
+
+        $cupom = Cupom::where([
+            'email' => $idusuario
+        ])
+        ->orderBy('created_at', 'desc')
+        ->get();
+
         if(count($pedidos) > 0 ){
-            return view('carrinho.index', compact('pedidos'));
+            return view('carrinho.index', compact('pedidos', 'cupom'));
         }else{
             return redirect()->route('home');
         }

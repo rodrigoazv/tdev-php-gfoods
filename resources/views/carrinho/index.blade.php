@@ -88,7 +88,7 @@
             
             <td>{{$pedido_produto->produto->name}}</td>
             <td>{{$pedido_produto->qtd}}</td>
-            <td>{{$pedido_produto->produto->price * $pedido_produto->qtd}}</td>
+            <td>{{($pedido_produto->produto->price * $pedido_produto->qtd)}}</td>
            
             </tr>
             @endforeach()
@@ -97,8 +97,8 @@
             @endforelse
         </tbody>
      </table>
-        <div>Desconto :{{$pedido->desconto}} </div>
-        <div>Total : {{$total_pedido}} </div>
+        <div>Desconto :{{$cupom[0]->valor}} </div>
+        <div>Total : {{$total_pedido  - $cupom[0]->valor}} </div>
       </div>
       <div class="modal-footer">
         <form  method="POST" style=" margin: auto"action="{{route('carrinho.concluir')}}">
