@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use Illuminate\Support\Facades\Auth;
+use App\Cupom;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $idusuario = Auth::id();
+
+        $cupom = Cupom::where([
+            'email' => $idusuario
+        ])
+        ->orderBy('created_at', 'desc')
+        ->get();
+        
         $food = $this->objFood->all();
-        return view('home', compact('food'));
+        return view('home', compact('food', 'cupom'));
     }
 }

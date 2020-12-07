@@ -9,7 +9,8 @@
             <h1>Message</h1>
         @endif
     @if (Auth::user()->name == 'admin')
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
             <ul class="nav nav-pills nav-fill" style="width: 100%">
                 <li class="nav-item" style="padding: 0 10px;">
@@ -27,7 +28,12 @@
                 </ul>
             </div>
         </nav>
+        
     @endif
+    <div class="alert alert-success" role="alert">
+        <div>Desconto acumulado : {{count($cupom) > 0 ? $cupom[0]->valor : '0' }}</div>
+    </div>
+    
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -39,6 +45,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
                     @foreach($food as $foods)
                     @if ($foods->type == 'Comida')
                     <div class="card" style="width: 18rem; margin: 10px">
