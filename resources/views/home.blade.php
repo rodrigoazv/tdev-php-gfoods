@@ -20,10 +20,7 @@
                     <a class="nav-link  " href="/cadprod">Cadastrar produto</a>
                 </li>
                 <li class="nav-item" style="padding: 0 10px;">
-                    <a class="nav-link  " href="/promocoes">Teste</a>
-                </li>
-                <li class="nav-item" style="padding: 0 10px;">
-                    <a class="nav-link  " href="/pedidos" tabindex="-1" >Pedidos todos</a>
+                    <a class="nav-link  " href="/allprod">Todos os produtos</a>
                 </li>
                 </ul>
             </div>

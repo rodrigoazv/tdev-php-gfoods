@@ -19,18 +19,16 @@
             </div>  
         </nav>
         <div>
-        
-         @csrf
          <table class="table">
-        <thead class="thead-dark">
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Actions</th>
-            </tr>
-        </thead>
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
         <tbody>
         @foreach($food as $foods)
             <tr>
@@ -38,12 +36,12 @@
                 <td>{{$foods->name}}</td>
                 <td>{{$foods->description}}</td>
                 <td>{{$foods->price}}</td>
-                <td>
-                <form id="form-remover-produto" method="POST" action="{{route('allprod.delete')}}">
-                        @csrf
-                        <input type='hidden' name='produto_id' value="{{$foods->id}}"/>
-                        <button class="btn btn-outline-danger">X</button>
-                </form>
+                <td style="display: flex">
+                    <form id="form-remover-produto" method="POST" action="{{route('allprod.delete')}}">
+                            @csrf
+                            <input type='hidden' name='produto_id' value="{{$foods->id}}"/>
+                            <button class="btn btn-outline-danger">X</button>
+                    </form>           
                 </td>
             </tr>
         @endforeach()
