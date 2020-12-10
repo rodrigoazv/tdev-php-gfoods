@@ -31,7 +31,7 @@ class ProdutoController extends Controller
             'id' => $idproduto
         ];
         $produto = Produto::where($where_produto)->orderBy('id', 'desc')->first();
-        echo $produto;
+
         Produto::where([
             'id' => $produto->id
         ])->delete();
@@ -44,18 +44,28 @@ class ProdutoController extends Controller
     public function update(){
         $req = Request();
         $idproduto = $req->input('produto_id');
+        $newname = $req->input('name');
+        $newdescription = $req->input('description');
+        $newprice = $req->input('price');
+        $newfoto = $req->input('foto');
+
         $where_produto = [
             'id' => $idproduto
         ];
         $produto = Produto::where($where_produto)->orderBy('id', 'desc')->first();
-        echo $produto;
+    
         Produto::where([
             'id' => $produto->id
-        ])->delete();
-
+        ])->update([
+            'name' => $newname,
+            'price' => $newprice,
+            'description' => $newdescription,
+            'foto' => $newfoto
+        ]);
+        
         $req->session()->flash('mensagem-sucesso');
 
-        return redirect()->route('allprod.index');
+        return redirect()->route('allprods.index');
     }
 
     public function store(Request $request)
