@@ -19,7 +19,10 @@ class ProdutoController extends Controller
     {
         return view('cadprod');
     }
-
+    public function index(){
+        $food = $this->objFood->all();
+        return view('allprod', compact('food'));
+    }
     public function store(Request $request)
     {
     

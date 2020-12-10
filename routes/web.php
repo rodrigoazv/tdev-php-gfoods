@@ -29,9 +29,10 @@ Route::post('/carrinho/deletar', 'CarrinhoController@deletar')->name('carrinho.d
 Route::post('/carrinho/concluir', 'CarrinhoController@concluir')->name('carrinho.concluir');
 Route::get('/carrinho/compras', 'CarrinhoController@compras')->name('carrinho.compras');
 //cozinha
-Route::get('/cozinha', 'CozinhaController@index')->name('cozinha.index');
+Route::get('/cozinha', 'CozinhaController@index')->name('cozinha.index');   
 Route::post('/cozinha/preparo', 'CozinhaController@preparando')->name('cozinha.preparando');
 //Admin
 
 Route::get('/cadprod', 'Admin\ProdutoController@create')->name('cadprod.create');
 Route::post('/foodscad', 'Admin\ProdutoController@store')->name('produto.store');
+Route::get('/allprod', 'Admin\ProdutoController@index')->name('allprod.index');

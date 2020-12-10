@@ -31,8 +31,9 @@
                         <div style="padding: 6px 20px">{{$pedido_produto->qtd}}</div>
                         <div style="padding: 6px 20px">{{$pedido_produto->valores}}</div>
                         @php
+                            
                              $total_pedido += $pedido_produto->valores;
-                         @endphp
+                        @endphp
                         
                         <form id="form-remover-produto" method="POST" action="{{route('carrinho.adicionar')}}">
                             @csrf
@@ -97,14 +98,17 @@
             @endforelse
         </tbody>
      </table>
+        @php          
+            $total_pedido_cupom = $total_pedido -$cupom[0]->valor;
+        @endphp
         <div>Desconto :{{$cupom[0]->valor}} </div>
-        <div>Total : {{$total_pedido  - $cupom[0]->valor}} </div>
+        <div>Total : {{$total_pedido_cupom}} </div>
       </div>
       <div class="modal-footer">
         <form  method="POST" style=" margin: auto"action="{{route('carrinho.concluir')}}">
             @csrf
             <input type="hidden" name="pedido_id" value="{{$pedido->id}}">
-            <input type="hidden" name="total" value="{{$total_pedido}}">
+            <input type="hidden" name="total" value="{{$total_pedido_cupom}}">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Numero do cartão</label>

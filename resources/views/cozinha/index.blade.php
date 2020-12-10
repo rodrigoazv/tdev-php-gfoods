@@ -2,6 +2,17 @@
 
 @section('content')
 <div class="container">
+<ul class="nav nav-pills nav-fill" style="width: 100%">
+                <li class="nav-item" style="padding: 0 10px;">
+                    <a class="nav-link " href="/cozinha">Cozinha</a>
+                </li>
+                <li class="nav-item " style="padding: 0 10px;">
+                    <a class="nav-link  " href="/cadprod">Cadastrar produto</a>
+                </li>
+                <li class="nav-item" style="padding: 0 10px;">
+                    <a class="nav-link  " href="/allprod">Todos os produtos</a>
+                </li>
+                </ul>
     <div class="row justify-content-center">
         <div class="col-md-8">
         @if(Session::has('mensagem-sucesso'))
@@ -10,6 +21,7 @@
         @if(Session::has('Mensagem-falha'))
             <h1>Sem sucesso</h1>
         @endif
+        
             <div class="card p-3">
                 
                     @forelse($pedidos as $pedido)
