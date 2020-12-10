@@ -26,13 +26,15 @@ class CarrinhoController extends Controller
         ])->whereIn(
             'status', ['PREPARO', 'FEITO']
         )->get();
-
+        
+       
         $cupom = Cupom::where([
             'email' => $idusuario
         ])
         ->orderBy('created_at', 'desc')
         ->get();
 
+        
         if(count($pedidos) > 0 ){
             return view('carrinho.index', compact('pedidos', 'cupom'));
         }else{

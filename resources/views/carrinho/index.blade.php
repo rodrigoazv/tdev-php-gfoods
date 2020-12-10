@@ -99,7 +99,9 @@
         </tbody>
      </table>
         @php          
+           
             $total_pedido_cupom = $total_pedido -$cupom[0]->valor;
+            
         @endphp
         <div>Desconto :{{$cupom[0]->valor}} </div>
         <div>Total : {{$total_pedido_cupom}} </div>

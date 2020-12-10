@@ -74,7 +74,7 @@
                 </div>
             </div>
         </nav>
-        
+        @if (Auth::user()->name != 'admin')
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
             <ul class="nav nav-pills nav-fill" style="width: 100%">
@@ -93,6 +93,7 @@
                 </ul>
             </div>
         </nav>
+        @endif
         <main class="py-4">
             
             @yield('content')

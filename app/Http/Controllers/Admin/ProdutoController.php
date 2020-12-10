@@ -21,10 +21,27 @@ class ProdutoController extends Controller
     }
     public function index(){
         $food = $this->objFood->all();
-        return view('allprod', compact('food'));
+        return view('allprods', compact('food'));
     }
     
     public function delete(){
+        $req = Request();
+        $idproduto = $req->input('produto_id');
+        $where_produto = [
+            'id' => $idproduto
+        ];
+        $produto = Produto::where($where_produto)->orderBy('id', 'desc')->first();
+        echo $produto;
+        Produto::where([
+            'id' => $produto->id
+        ])->delete();
+
+        $req->session()->flash('mensagem-sucesso');
+
+        return redirect()->route('allprod.index');
+    }
+
+    public function update(){
         $req = Request();
         $idproduto = $req->input('produto_id');
         $where_produto = [
