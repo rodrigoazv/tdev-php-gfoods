@@ -23,6 +23,24 @@ class ProdutoController extends Controller
         $food = $this->objFood->all();
         return view('allprod', compact('food'));
     }
+    
+    public function delete(){
+        $req = Request();
+        $idproduto = $req->input('produto_id');
+        $where_produto = [
+            'id' => $idproduto
+        ];
+        $produto = Produto::where($where_produto)->orderBy('id', 'desc')->first();
+        echo $produto;
+        Produto::where([
+            'id' => $produto->id
+        ])->delete();
+
+        $req->session()->flash('mensagem-sucesso');
+
+        return redirect()->route('allprod.index');
+    }
+
     public function store(Request $request)
     {
     
