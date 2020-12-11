@@ -13,7 +13,7 @@
                     <a class="nav-link  " href="/cadprod">Cadastrar produto</a>
                 </li>
                 <li class="nav-item" style="padding: 0 10px;">
-                    <a class="nav-link  " href="/allprod">Todos os produtos</a>
+                    <a class="nav-link  " href="/allprods">Todos os produtos</a>
                 </li>
                 </ul>
             </div>  

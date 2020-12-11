@@ -35,6 +35,6 @@ Route::post('/cozinha/preparo', 'CozinhaController@preparando')->name('cozinha.p
 
 Route::get('/cadprod', 'Admin\ProdutoController@create')->name('cadprod.create');
 Route::post('/foodscad', 'Admin\ProdutoController@store')->name('produto.store');
-Route::get('/allprods', 'Admin\ProdutoController@index')->name('allprods.index');
+Route::get('/allprods', 'Admin\ProdutoController@index')->name('allprod.index');
 Route::post('/deletprod', 'Admin\ProdutoController@delete')->name('allprod.delete');
 Route::post('/updateprod', 'Admin\ProdutoController@update')->name('allprod.update');

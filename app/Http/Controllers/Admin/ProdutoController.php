@@ -62,10 +62,10 @@ class ProdutoController extends Controller
             'description' => $newdescription,
             'foto' => $newfoto
         ]);
-        
+
         $req->session()->flash('mensagem-sucesso');
 
-        return redirect()->route('allprods.index');
+        return redirect()->route('allprod.index');
     }
 
     public function store(Request $request)
